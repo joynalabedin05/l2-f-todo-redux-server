@@ -23,22 +23,22 @@ const run = async () => {
     const db = client.db('todo');
     const taskCollection = db.collection('tasks');
 
-    app.get('/tasks', async (req, res) => {
-      const cursor = taskCollection.find({});
-      const tasks = await cursor.toArray();
-      res.send({ status: true, data: tasks });
-     
-    });
-
     // app.get('/tasks', async (req, res) => {
-    //   let query = {};
-    //   if (req.query.priority) {
-    //     query.priority = req.query.priority;
-    //   }
-    //   const cursor = taskCollection.find(query);
+    //   const cursor = taskCollection.find({});
     //   const tasks = await cursor.toArray();
     //   res.send({ status: true, data: tasks });
+     
     // });
+
+    app.get('/tasks', async (req, res) => {
+      let query = {};
+      if (req.query.priority) {
+        query.priority = req.query.priority;
+      }
+      const cursor = taskCollection.find(query);
+      const tasks = await cursor.toArray();
+      res.send({ status: true, data: tasks });
+    });
 
     app.post('/task', async (req, res) => {
       const task = req.body;
