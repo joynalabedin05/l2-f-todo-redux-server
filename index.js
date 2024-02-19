@@ -9,7 +9,7 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-const uri = "mongodb+srv://redux-todo:O1OH0TNaLB67rD7w@cluster0.ssvrn1a.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://name:password@cluster0.ssvrn1a.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
